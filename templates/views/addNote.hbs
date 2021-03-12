@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Add Note</title>
+        <script src="vueJS/vueDev.js"></script>
+        <!-- Latest compiled and minified CSS -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+
+        <link rel="stylesheet" href="css/styles.css">
+    </head>
+    <body>
+        <div id="app">
+            <div id="head">
+                <h1>{{heading}}</h1>
+                {{>header}}
+            </div>
+            <div class="main-content leftContent">
+              <div class="modal-header">
+                <h3><strong>Note Type :</strong></h3> {{>navbar}}
+              </div>
+              <div class="noteForm">
+                <form>
+                  <div class="form-group">
+                    <label for="recipient-name" class="col-form-label">Title:</label>
+                    {{!-- class = 'note-search' => to search matching notes --}}
+                    <input type="text" class="form-control note-search" id="recipient-name"  v-model="note.title" required>
+                  </div>
+                  <div class="form-group">
+                    <label for="message-text" class="col-form-label">Description:</label>
+                    <textarea class="form-control" id="message-text" v-model="description"></textarea>
+                  </div>
+
+                  <div v-if="note.type === 'financial-note' ">
+                    {{>financialNotes}}
+                  </div>
+                  <div v-else-if="note.type === 'reminder-note' ">
+                    {{>reminderNotes}}
+                  </div>
+                </form>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-primary" @click="onSubmit">add note</button>
+              </div>
+            </div>
+
+            <div class="rightContent" v-if="addNoteSearch">
+              <strong>Matching Notes : </strong>
+              <note-list
+                v-for="(note, index) in renderNotes"
+                :note="note"
+                :key="index"
+                @remove="removeNote"
+                @recover-note="recoverNote"
+                {{!-- @go-to="goTo" --}}
+              ></note-list>
+            </div>
+        </div>
+
+        <script src="js/function.js"></script>
+        <script src="vueJS/app.js"></script>
+        {{!-- <script src="vueJS/noteDetails.js"><script> --}}
+        <script src="js/script.js"></script>
+    </body>
+</html>

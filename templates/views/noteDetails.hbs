@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Note Details</title>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+        <link rel="stylesheet" href="css/styles.css">
+        <script src="vueJS/vueDev.js"></script>
+        {{!-- <script src="https://unpkg.com/vue@3.0.0-beta.12/dist/vue.global.js"></script> --}}
+    </head>
+    <body>
+        <div id="app">
+            <div>
+                <h1 id="noteTitle">{{heading}} : {{title}}</h1>
+            </div>
+            
+            <div>
+                {{>header}}
+            </div>
+
+            <div id="details"
+              v-for="note in getNote">
+            </div>
+            <note-list
+              v-for="(note, index) in getNote"
+              :note="note"
+              :key="index"
+              @remove="removeNote"
+              @recover-note="recoverNote"
+            ></note-list>
+        </div>
+
+        <script src="js/function.js"></script>
+        <script src="vueJS/noteDetails.js"></script>
+    </body>
+
+</html>

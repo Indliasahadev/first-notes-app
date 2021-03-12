@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Notes-App</title>
+        <script src="vueJS/vueDev.js"></script>
+
+         <!-- Latest compiled and minified CSS -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+
+        {{!-- <!-- jQuery library -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+        <!-- Latest compiled JavaScript -->
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>  --}}
+
+        <link rel="stylesheet" href="css/styles.css">
+    </head>
+    <body>
+        <div id="app">
+          <div>
+              <h1>{{heading}}</h1>
+              {{>header}}
+          </div>
+
+          <div id="main-content">
+            <div>
+              <button type="button" class="btn btn-primary" @click="goTo('add-note')">Add Note</button>
+              <button type="button" class="btn btn-primary" @click="show = 'saved notes'">Show all notes</button>
+              <button type="button" class="btn btn-primary" @click="show = 'none'">hide note</button>
+              <image id="trash-bin" src="icon/trash.svg" @click="show = 'trash notes'"></image>
+            </div>
+
+            <div id="search-note">
+                <input id="note-search" type="search" placeholder="search note here">
+            </div>
+
+            <note-list
+              v-for="(note, index) in renderNotes"
+              :note="note"
+              :key="index"
+              @remove="removeNote"
+              @recover-note="recoverNote"
+              @go-to="goTo"
+            ></note-list>
+
+          </div>
+        </div>
+
+        {{>footer}}
+
+        <script src="js/function.js"></script>
+        <script src="vueJS/app.js"></script>
+        <script src="js/script.js"></script>
+        
+    </body>
+
+</html>
