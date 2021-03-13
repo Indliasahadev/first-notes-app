@@ -115,16 +115,20 @@ Vue.component('note-list', {
             console.log(id)
             let notes = getNotes();
             let index = notes.findIndex((el)=> el.id === id);
-            console.log(index, notes.length, notes[index])
+            console.log(index, notes.length)
             
             if(notes[index].trash === true){
-                notes = notes.filter((note)=> note.id !== id);
+                if(notes.length === 1){
+                    notes = [];
+                }else{
+                    notes = notes.filter((note)=> note.id !== id);
+                }
             }else{
                 notes[index].trash = true;
+                notes[index].trashTime = new Date().toDateString();
                 console.log(notes[index]);
             }
 
-            notes[index].trashTime = new Date().getTime();
             saveNotes(notes);
             this.notes = notes;
         },

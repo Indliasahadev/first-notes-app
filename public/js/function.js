@@ -41,7 +41,7 @@ const addNote = (note, notes) =>{
 
         if(duplicateDesc > -1){
             console.log('duplicate desc');
-            notes[isNoteDuplicate].dateUpdated = new Date().getTime();
+            notes[isNoteDuplicate].lastUpdated = new Date().toDateString();
             // console.log('befr ',notes[duplicateNote].body[duplicateDesc].price)
             notes[isNoteDuplicate].body[duplicateDesc].price = parseInt(notes[isNoteDuplicate].body[duplicateDesc].price) + parseInt(note.body[0].price);
         }else{
