@@ -81,7 +81,11 @@ label{
     background-image: linear-gradient(rgb(253, 229, 209), rgb(202, 129, 32));;
 }
 .details{
+    color: blue;
     margin-top : 3px;
+}
+.details:hover{
+    color: white;
 }
 .detail{
     color :brown;
@@ -90,7 +94,7 @@ label{
     color: rgb(255, 255, 255);
 }
 .noteDescriptionLabel{
-    color: rgb(72, 105, 195);
+    color: rgb(77, 77, 77);
 }
 #trash-bin{
     width: 23px;

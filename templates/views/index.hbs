@@ -26,8 +26,10 @@
 
           <div id="main-content">
             <div>
-              <button type="button" class="btn btn-primary" @click="goTo('add-note')">Add Note</button>
-              <button type="button" class="btn btn-primary" @click="show = 'saved notes'">Show all notes</button>
+              <button type="button" class="btn btn-primary" @click="goTo('add-note')"
+                :style="{ backgroundColor : activeBgColor ? 'grey' : 'blue' }"
+              >Add Note</button>
+              <button type="button" class="btn btn-primary" @click="show = 'saved notes'">Saved notes</button>
               <button type="button" class="btn btn-primary" @click="show = 'none'">hide note</button>
               <image id="trash-bin" src="icon/trash.svg" @click="show = 'trash notes'"></image>
             </div>

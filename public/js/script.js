@@ -21,7 +21,9 @@ if(noteSearchClass === null){
     })
 }else{          //searching for note from addNote page using class
     noteSearchClass.addEventListener('input', () =>{
+        console.log('searching.....')
         app.addNoteSearch = true;
+        app.addNoteInput = noteSearchClass.value;
         app.notes = searchNote(noteSearchClass.value, 'add-note');
     })
 }

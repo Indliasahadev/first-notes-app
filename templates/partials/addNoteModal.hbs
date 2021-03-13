@@ -1,4 +1,39 @@
-<div class="modal-header">
+<div class="main-content leftContent">
+    <div class="modal-header">
+      <h3><strong>Note Type :</strong></h3> {{>navbar}}
+    </div>
+    <div class="noteForm">
+      <form>
+        <div class="form-group">
+          <label for="recipient-name" class="col-form-label">Title:</label>
+          {{!-- class = 'note-search' => to search matching notes --}}
+          <input type="text" class="form-control note-search" id="recipient-name"  v-model="note.title" required>
+        </div>
+        <div class="form-group">
+          <label for="message-text" class="col-form-label">Description:</label>
+          <textarea class="form-control" id="message-text" v-model="description"></textarea>
+        </div>
+      <div v-if="note.type === 'financial-note' ">
+        {{>financialNotes}}
+      </div>
+      <div v-else-if="note.type === 'reminder-note' ">
+        {{>reminderNotes}}
+      </div>
+    </form>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-primary" @click="onSubmit">add note</button>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+{{!-- <div class="modal-header">
   <button type="button" class="close" data-dismiss="modal" aria-label="Close">
     <span aria-hidden="true">&times;</span>
   </button>
@@ -28,4 +63,4 @@
 <div class="modal-footer">
   <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
   <button type="button" class="btn btn-primary" @click="onSubmit">add note</button>
-</div>
+</div> --}}

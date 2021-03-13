@@ -19,12 +19,14 @@
                 {{>header}}
             </div>
 
-            <div id="details"
-              v-for="note in getNote">
-            </div>
-            <note-list
-              v-for="(note, index) in getNote"
+            <button type="button" class="btn btn-primary" @click="show = 'saved note body'">Saved notes</button>
+            <button type="button" class="btn btn-primary" @click="show = 'none'">hide note</button>
+            <image id="trash-bin" src="icon/trash.svg" @click="show = 'trash note body'"></image>
+
+            <br><note-list
+              v-for="(note, index) in renderNote"
               :note="note"
+              :index="index"
               :key="index"
               @remove="removeNote"
               @recover-note="recoverNote"
